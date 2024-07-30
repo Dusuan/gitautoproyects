@@ -1,0 +1,27 @@
+{
+  "name": "gitautoproyects",
+  "version": "1.0.0",
+  "description": "cool api that lets you find important information on your public github proyects",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dusuan/gitautoproyects.git"
+  },
+  "keywords": [
+    "proyects",
+    "auto"
+  ],
+  "author": "Dusuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dusuan/gitautoproyects/issues"
+  },
+  "homepage": "https://github.com/Dusuan/gitautoproyects#readme",
+  "dependencies": {
+    "puppeteer": "^22.14.0"
+  },
+  "type": "module"
+}
