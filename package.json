@@ -22,9 +22,10 @@
   },
   "homepage": "https://github.com/Dusuan/gitautoproyects#readme",
   "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
+    "chromium": "^3.0.3",
     "express": "^4.19.2",
     "puppeteer-core": "^22.15.0",
-  "chrome-aws-lambda": "^10.1.0",
     "vercel": "^35.2.2"
   },
   "type": "module"
