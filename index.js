@@ -7,8 +7,10 @@ import express from "express";
   const app = express();
   app.use(express.json());
 
+  const port = process.env.PORT || 5000;
+
   app.listen(
-    8080,
+    port,
     () => console.log("Server running")
   )
 
@@ -22,3 +24,5 @@ import express from "express";
     res.status(200).send(info);
 
   });
+
+  export default app

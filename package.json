@@ -4,7 +4,8 @@
   "description": "cool api that lets you find important information on your public github proyects",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "vercel-build": "echo hello"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,8 @@
   "homepage": "https://github.com/Dusuan/gitautoproyects#readme",
   "dependencies": {
     "express": "^4.19.2",
-    "puppeteer": "^22.14.0"
+    "puppeteer": "^22.14.0",
+    "vercel": "^35.2.2"
   },
   "type": "module"
 }
