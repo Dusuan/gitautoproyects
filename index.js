@@ -1,4 +1,4 @@
-import puppeter from "puppeteer";
+import puppeter from "puppeteer-core";
 import pinnedProyects from "./getProyectUrls.js";
 import getFullProyectInfo from "./getFullProyectInfo.js";
 import express from "express";

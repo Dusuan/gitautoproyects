@@ -9,7 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dusuan/gitautoproyects.git"
+    "url": "git+https://github.com/Dusuan/gitautoproyects.git",
+    "postinstall": "apt-get install -y chromium"
+
   },
   "keywords": [
     "proyects",
@@ -25,6 +27,7 @@
     "express": "^4.19.2",
     "puppeteer": "^22.14.0",
     "vercel": "^35.2.2"
+    
   },
   "type": "module"
 }
