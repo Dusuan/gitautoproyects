@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import pinnedProyects from "./getProyectUrls.js";
 
 const getFullProyectInfo = async (user) => {

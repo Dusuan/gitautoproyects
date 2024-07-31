@@ -10,7 +10,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dusuan/gitautoproyects.git",
-    "postinstall": "apt-get install -y chromium"
 
   },
   "keywords": [

@@ -1,4 +1,4 @@
-import puppeter from "puppeteer-core";
+import puppeter from "puppeteer";
 
 const pinnedProyects = async (user) => {
   const browser = await puppeter.launch();
