@@ -1,8 +1,11 @@
 import puppeteer from "puppeteer";
 import pinnedProyects from "./getProyectUrls.js";
 
-const getFullProyectInfo = async () => {
-  const proyectUrls = await pinnedProyects();
+const getFullProyectInfo = async (user) => {
+
+  const url = `https://github.com/${user}`
+
+  const proyectUrls = await pinnedProyects(url);
   const allproyects = Promise.all(
     proyectUrls.map(async (url) => {
       return await getProyectInfo(url);
@@ -12,7 +15,7 @@ const getFullProyectInfo = async () => {
 };
 
 const getProyectInfo = async (url) => {
- const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
   // por alguna razon en algunos titulos, no los regresa en formato string, no sé aun por qué
@@ -35,13 +38,15 @@ const getProyectInfo = async (url) => {
   });
 
   const proyectLanguages = await page.evaluate(() => {
-    const proyectLang = document.querySelectorAll("div.BorderGrid-cell li.d-inline");
+    const proyectLang = document.querySelectorAll(
+      "div.BorderGrid-cell li.d-inline"
+    );
     return Array.from(proyectLang)
       .map((language) => {
         const lang = language.querySelector("span");
         return lang ? lang.innerText.toLocaleLowerCase() : null;
       })
-      .filter((lang) => lang!=null && !lang.includes("other"));
+      .filter((lang) => lang != null && !lang.includes("other"));
   });
   const proyectReadMe = await page.evaluate(() => {
     const proyectReadMe = document.querySelectorAll("article");

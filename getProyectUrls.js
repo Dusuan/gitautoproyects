@@ -1,11 +1,9 @@
 import puppeter from "puppeteer";
 
-const url = "https://github.com/Dusuan";
-
-const pinnedProyects = async () => {
+const pinnedProyects = async (user) => {
   const browser = await puppeter.launch();
   const page = await browser.newPage();
-  await page.goto(url);
+  await page.goto(user);
 
   const pinnedProyects = await page.evaluate(() => {
     const pinnedProyects = document.querySelectorAll(

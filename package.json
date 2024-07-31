@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Dusuan/gitautoproyects#readme",
   "dependencies": {
+    "express": "^4.19.2",
     "puppeteer": "^22.14.0"
   },
   "type": "module"
