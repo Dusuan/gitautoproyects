@@ -4,6 +4,7 @@ import chrome from "chrome-aws-lambda"
 const isLocal = process.env.NODE_ENV === 'development';
 
 const pinnedProyects = async (user) => {
+  let browser;
   try{
   const browser = await puppeteer.launch({
     args: isLocal ? [] : chrome.args,
@@ -24,10 +25,13 @@ const pinnedProyects = async (user) => {
     });
   });
   return pinnedProyects;
-  }
-  finally{
-    browser.close();
-
+  } catch (error) {
+    console.error('Error in pinnedProyects:', error);
+    throw error; // Ensure the error is rethrown to be handled upstream
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
   }
 };
 
