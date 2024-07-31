@@ -1,4 +1,5 @@
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chrome from "chrome-aws-lambda"
 import pinnedProyects from "./getProyectUrls.js";
 
 const getFullProyectInfo = async (user) => {
@@ -15,7 +16,14 @@ const getFullProyectInfo = async (user) => {
 };
 
 const getProyectInfo = async (url) => {
-  const browser = await puppeteer.launch();
+  try{
+  const browser = await  puppeteer.launch({
+    args: isLocal ? [] : chrome.args,
+    executablePath: isLocal ? puppeteer.executablePath() : await chrome.executablePath,
+    headless: isLocal ? true : chrome.headless,
+  });
+
+
   const page = await browser.newPage();
   await page.goto(url);
   // por alguna razon en algunos titulos, no los regresa en formato string, no sé aun por qué
@@ -64,13 +72,16 @@ const getProyectInfo = async (url) => {
     });
   });
 
-  await browser.close();
+
   return {
     [proyectName[1]]: proyectDescription,
     proyectReadMe,
     proyectReadMeImages,
     proyectLanguages,
   };
+  } finally{
+    await browser.close();
+  }
 };
 
 export default getFullProyectInfo;

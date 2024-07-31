@@ -1,7 +1,13 @@
-import puppeter from "puppeteer";
-
+import puppeteer from "puppeteer-core";
+import chrome from "chrome-aws-lambda"
 const pinnedProyects = async (user) => {
-  const browser = await puppeter.launch();
+  try{
+  const browser = await  puppeteer.launch({
+    args: isLocal ? [] : chrome.args,
+    executablePath: isLocal ? puppeteer.executablePath() : await chrome.executablePath,
+    headless: isLocal ? true : chrome.headless,
+  });
+
   const page = await browser.newPage();
   await page.goto(user);
 
@@ -14,9 +20,11 @@ const pinnedProyects = async (user) => {
       return title;
     });
   });
-
-  browser.close();
   return pinnedProyects;
-};
+  }
+  finally{
+    await  browser.close();
+
+  }};
 
 export default pinnedProyects;

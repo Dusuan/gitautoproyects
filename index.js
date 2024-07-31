@@ -1,4 +1,5 @@
-import puppeter from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chrome from "chrome-aws-lambda";
 import pinnedProyects from "./getProyectUrls.js";
 import getFullProyectInfo from "./getFullProyectInfo.js";
 import express from "express";
