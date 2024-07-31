@@ -9,8 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dusuan/gitautoproyects.git",
-
+    "url": "git+https://github.com/Dusuan/gitautoproyects.git"
   },
   "keywords": [
     "proyects",
@@ -24,9 +23,7 @@
   "homepage": "https://github.com/Dusuan/gitautoproyects#readme",
   "dependencies": {
     "express": "^4.19.2",
-    "puppeteer": "^22.14.0",
-    "vercel": "^35.2.2"
-    
+    "puppeteer": "^22.14.0"
   },
   "type": "module"
 }
