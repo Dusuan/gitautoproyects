@@ -17,11 +17,11 @@ const getFullProyectInfo = async (user) => {
 
 const getProyectInfo = async (url) => {
   try{
-  const browser = await  puppeteer.launch({
-    args: isLocal ? [] : chrome.args,
-    executablePath: isLocal ? puppeteer.executablePath() : await chrome.executablePath,
-    headless: isLocal ? true : chrome.headless,
-  });
+    browser = await puppeteer.launch({
+      args: isLocal ? ['--no-sandbox'] : chrome.args.concat(['--no-sandbox']),
+      executablePath: isLocal ? puppeteer.executablePath() : await chrome.executablePath,
+      headless: isLocal ? false : chrome.headless,
+    });
 
 
   const page = await browser.newPage();
