@@ -1,8 +1,11 @@
 import puppeteer from "puppeteer-core";
 import chrome from "chrome-aws-lambda"
+
+const isLocal = process.env.NODE_ENV === 'development';
+
 const pinnedProyects = async (user) => {
   try{
-  const browser = await  puppeteer.launch({
+  const browser = await puppeteer.launch({
     args: isLocal ? [] : chrome.args,
     executablePath: isLocal ? puppeteer.executablePath() : await chrome.executablePath,
     headless: isLocal ? true : chrome.headless,
@@ -23,8 +26,9 @@ const pinnedProyects = async (user) => {
   return pinnedProyects;
   }
   finally{
-    await  browser.close();
+    browser.close();
 
-  }};
+  }
+};
 
 export default pinnedProyects;
