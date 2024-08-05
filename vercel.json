@@ -13,6 +13,6 @@
       }
     ],
     "env":{
-      "PUPPETER-SKIP-CROMIUM-DOWNLOAD": "true"
+      "PUPPETER_SKIP_CROMIUM_DOWNLOAD": "true"
     }
   }
