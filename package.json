@@ -4,9 +4,7 @@
   "description": "cool api that lets you find important information on your public github proyects",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "vercel-build": "npm install --legacy-peer-deps && echo hello",
-    "postinstall":"node installLibraries.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
