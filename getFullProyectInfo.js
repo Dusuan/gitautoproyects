@@ -1,18 +1,12 @@
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import pinnedProyects from "./getProyectUrls.js";
-import puppeteerCore from "puppeteer-core";
-import chromium from "chrome-aws-lambda";
 
 
 
 async function getBrowser() {
   let browser = null;
   try {
-    browser = await puppeteer.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
-    });
+    browser = await puppeteer.launch();
   } catch (error) {
     console.error('Error launching browser:', error);
     throw error;

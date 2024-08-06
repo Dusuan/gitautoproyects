@@ -11,7 +11,7 @@
   "author": "Dusuan",
   "license": "ISC",
   "dependencies": {
-    "@sparticuz/chromium": "^123.0.1",
+    "@sparticuz/chromium": "^127.0.0",
     "chrome-aws-lambda": "^10.1.0",
     "express": "^4.19.2",
     "puppeteer": "^22.15.0",
