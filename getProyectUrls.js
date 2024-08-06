@@ -1,11 +1,29 @@
 import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium";
+import puppeteerCore from "puppeteer-core";
+
+ async function getBrowser() {
+  if (process.env.VERCEL_ENV === "production") {
+    const executablePath = await chromium.executablePath();
+
+    const browser = await puppeteerCore.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath,
+      headless: chromium.headless,
+    });
+    return browser;
+  } else {
+    const browser = await puppeteer.launch();
+    return browser;
+  }
+}
 
 
 const pinnedProyects = async (user) => {
   let browser;
   try{
-    browser = await puppeteer.launch();
-
+  browser = await getBrowser();
   const page = await browser.newPage();
   await page.goto(user);
 

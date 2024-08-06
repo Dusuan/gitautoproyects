@@ -10,7 +10,9 @@
   "author": "Dusuan",
   "license": "ISC",
   "dependencies": {
+    "@sparticuz/chromium": "^123.0.1",
     "express": "^4.19.2",
-    "puppeteer": "^22.15.0"
+    "puppeteer": "^22.6.2",
+    "puppeteer-core": "^22.6.2"
   }
 }

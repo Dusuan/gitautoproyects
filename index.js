@@ -1,14 +1,25 @@
-import getFullProyectInfo from "./getFullProyectInfo.js";
 import express from "express";
-const PORT = process.env.port || 4040
+import getFullProyectInfo from "./getFullProyectInfo.js";
+
+const PORT = process.env.PORT || 4040;
 const app = express();
+
 app.use(express.json());
 
 app.get("/:user", async (req, res) => {
-  res.send(await getFullProyectInfo(req.params.user));
+  try {
+    const userInfo = await getFullProyectInfo(req.params.user);
+    res.send(userInfo);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.listen(PORT, (err) => {
-  if (err) console.log(err)
-  console.log(`Server running on port ${PORT}`);
-})
+  if (err) {
+    console.error("Error starting server:", err);
+  } else {
+    console.log(`Server running on port ${PORT}`);
+  }
+});

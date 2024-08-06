@@ -1,9 +1,28 @@
 import puppeteer from "puppeteer";
 import pinnedProyects from "./getProyectUrls.js";
+import puppeteerCore from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
+
+async function getBrowser() {
+  if (process.env.VERCEL_ENV === "production") {
+    const executablePath = await chromium.executablePath();
+
+    const browser = await puppeteerCore.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath,
+      headless: chromium.headless,
+    });
+    return browser;
+  } else {
+    const browser = await puppeteer.launch();
+    return browser;
+  }
+}
+
 
 const getFullProyectInfo = async (user) => {
   const url = `https://github.com/${user}`;
-
   const proyectUrls = await pinnedProyects(url);
   const allproyects = Promise.all(
     proyectUrls.map(async (url) => {
@@ -13,8 +32,10 @@ const getFullProyectInfo = async (user) => {
   return allproyects;
 };
 
-const getProyectInfo = async (url) => {  
-    const browser = await puppeteer.launch();
+const getProyectInfo = async (url) => {
+  let browser   
+  try{
+    browser = await getBrowser();
     const page = await browser.newPage();
     await page.goto(url);
     // por alguna razon en algunos titulos, no los regresa en formato string, no sé aun por qué
@@ -70,6 +91,11 @@ const getProyectInfo = async (url) => {
       proyectReadMeImages,
       proyectLanguages,
     };
+  }
+  catch (error) {
+    console.error('Error in getProyectInfo:', error);
+    return "error";
+  }
 };
 
 export default getFullProyectInfo;
