@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer-core";
-import chromium from 'chrome-aws-lambda';
+import chrome from 'chrome-aws-lambda';
 
 async function getBrowser() {
   let browser;
