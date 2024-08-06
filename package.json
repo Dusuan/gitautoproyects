@@ -10,11 +10,8 @@
   },
   "author": "Dusuan",
   "license": "ISC",
-  "dependencies": {
-    "@sparticuz/chromium": "^127.0.0",
-    "chrome-aws-lambda": "^10.1.0",
+  "dependencies": {  
     "express": "^4.19.2",
-    "puppeteer": "^22.15.0",
-    "puppeteer-core": "^10.4.0"
+    "puppeteer": "^22.15.0"
   }
 }
