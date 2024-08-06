@@ -7,10 +7,11 @@ import chromium from 'chrome-aws-lambda';
 async function getBrowser() {
   let browser = null;
   try {
-     browser = await puppeteer.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
+    browser = await puppeteer.launch({
+      args: chrome.args,
+      defaultViewport: chrome.defaultViewport,
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless,
     });
 
   } catch (error) {
