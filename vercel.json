@@ -13,7 +13,7 @@
       }
     ],
     "functions":{
-        "index.js":{
+        "finalautogit/*.js":{
             "maxDuration": 60
         }
     }
