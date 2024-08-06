@@ -6,7 +6,10 @@ import pinnedProyects from "./getProyectUrls.js";
 async function getBrowser() {
   let browser = null;
   try {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      headless: true,
+      executablePath: puppeteer.executablePath(), // Ensure Puppeteer uses the correct path
+    });
   } catch (error) {
     console.error('Error launching browser:', error);
     throw error;
