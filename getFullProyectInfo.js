@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import pinnedProyects from "./getProyectUrls.js";
 import puppeteerCore from "puppeteer-core";
-import chromium from "@sparticuz/chromium";
+import chromium from "chrome-aws-lambda";
 
 
 

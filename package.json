@@ -5,14 +5,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "build": "npm install"
   },
   "author": "Dusuan",
   "license": "ISC",
   "dependencies": {
     "@sparticuz/chromium": "^123.0.1",
+    "chrome-aws-lambda": "^10.1.0",
     "express": "^4.19.2",
     "puppeteer": "^22.6.2",
-    "puppeteer-core": "^22.6.2"
+    "puppeteer-core": "^10.1.0"
   }
 }

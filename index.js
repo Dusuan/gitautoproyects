@@ -1,6 +1,7 @@
 import express from "express";
 import getFullProyectInfo from "./getFullProyectInfo.js";
 
+export const maxDuration = 60;
 
 const PORT = process.env.PORT || 4040;
 const app = express();

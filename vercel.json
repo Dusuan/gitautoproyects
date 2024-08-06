@@ -11,10 +11,6 @@
         "src": "/(.*)",
         "dest": "/"
       }
-    ],
-    "functions":{
-        "finalautogit/*.js":{
-            "maxDuration": 60
-        }
-    }
+    ]
+    
 }
