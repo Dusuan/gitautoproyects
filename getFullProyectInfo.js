@@ -3,9 +3,7 @@ import pinnedProyects from "./getProyectUrls.js";
 import puppeteerCore from "puppeteer-core";
 import chromium from "@sparticuz/chromium";
 
-async function randomsoverceldeploys() {
-  return "This is a random string to trigger a deploy";
-}
+
 
 async function getBrowser() {
   if (process.env.VERCEL_ENV === "production") {
