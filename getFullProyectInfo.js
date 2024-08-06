@@ -6,20 +6,18 @@ import chromium from "chrome-aws-lambda";
 
 
 async function getBrowser() {
-  if (process.env.VERCEL_ENV === "production") {
-    const executablePath = await chromium.executablePath();
-
-    const browser = await puppeteerCore.launch({
+  let browser = null;
+  try {
+    browser = await puppeteer.launch({
       args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath,
+      executablePath: await chromium.executablePath,
       headless: chromium.headless,
     });
-    return browser;
-  } else {
-    const browser = await puppeteer.launch();
-    return browser;
+  } catch (error) {
+    console.error('Error launching browser:', error);
+    throw error;
   }
+  return browser;
 }
 
 
