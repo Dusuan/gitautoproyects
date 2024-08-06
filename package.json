@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "build": "npm install"
+    "build": "npm install",
+    "postinstall": "npx puppeteer install chrome"
+
   },
   "author": "Dusuan",
   "license": "ISC",
