@@ -1,15 +1,17 @@
 import puppeteer from "puppeteer-core";
 import chrome from "chrome-aws-lambda"
 
-const isLocal = process.env.NODE_ENV === 'development';
 
 const pinnedProyects = async (user) => {
   let browser;
   try{
+    const executablePath = "/usr/bin/google-chrome";
+    console.log('Using executablePath:', executablePath);
+
     browser = await puppeteer.launch({
-      args: isLocal ? ['--no-sandbox'] : chrome.args.concat(['--no-sandbox']),
-      executablePath: isLocal ? puppeteer.executablePath() : await chrome.executablePath,
-      headless: isLocal ? false : chrome.headless,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"], 
+      executablePath: executablePath, 
+      headless: true, 
     });
 
   const page = await browser.newPage();

@@ -8,10 +8,10 @@ import express from "express";
   const app = express();
   app.use(express.json());
 
-  const port = process.env.PORT || 5000;
+  const port = process.env.PORT || 4040;
 
   app.listen(
-    port,
+    port, '0.0.0.0',
     () => console.log("Server running")
   )
 
@@ -23,7 +23,6 @@ import express from "express";
     }
     const info = await getFullProyectInfo(req.query.user);
     res.status(200).send(info);
-
   });
 
   export default app

@@ -2,11 +2,12 @@ import puppeteer from "puppeteer-core";
 import chrome from "chrome-aws-lambda";
 import pinnedProyects from "./getProyectUrls.js";
 
+
 const getFullProyectInfo = async (user) => {
   const url = `https://github.com/${user}`;
 
   const proyectUrls = await pinnedProyects(url);
-  const allproyects = Promise.all(
+  const allproyects = await Promise.all(
     proyectUrls.map(async (url) => {
       return await getProyectInfo(url);
     })
@@ -15,13 +16,15 @@ const getFullProyectInfo = async (user) => {
 };
 
 const getProyectInfo = async (url) => {
+  let browser;
   try {
+    const executablePath = "/usr/bin/google-chrome";
+    console.log('Using executablePath:', executablePath);
+
     browser = await puppeteer.launch({
-      args: isLocal ? ["--no-sandbox"] : chrome.args.concat(["--no-sandbox"]),
-      executablePath: isLocal
-        ? puppeteer.executablePath()
-        : await chrome.executablePath,
-      headless: isLocal ? false : chrome.headless,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"], 
+      executablePath: executablePath, 
+      headless: true, 
     });
 
     const page = await browser.newPage();
